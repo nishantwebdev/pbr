@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --pbr-purple-dark: #7f1aa6;
+  --pbr-purple-light: #b140ec;
+  --pbr-black: #000000;
+  --pbr-charcoal: #252525;
+  --pbr-slate: #393939;
+  --pbr-muted: #878787;
+  --pbr-border: #e2e2e2;
+  --pbr-bg-light: #f4f4f4;
+  --pbr-white: #ffffff;
+  --pbr-gold: #ffc72c;
+  --pbr-gold-hover: #e5a800;
+}
+
+body {
+  font-family: var(--font-poppins);
+  color: var(--pbr-charcoal);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom PBR Button Styles matching scraped WordPress site */
+.btn-pbr-primary {
+  background-color: #7f1aa6;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 14px rgba(127, 26, 166, 0.28);
+  text-decoration: none;
+}
+
+.btn-pbr-primary:hover {
+  background-color: #b140ec;
+  box-shadow: 0 6px 20px rgba(177, 64, 236, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-pbr-gold {
+  background-color: #ffc72c;
+  color: #000000;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(255, 199, 44, 0.3);
+  text-decoration: none;
+}
+
+.btn-pbr-gold:hover {
+  background-color: #e5a800;
+  transform: translateY(-1px);
+}
+
+.btn-pbr-outline {
+  border: 1.5px solid #7f1aa6;
+  color: #7f1aa6;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.btn-pbr-outline:hover {
+  background-color: #7f1aa6;
+  color: #ffffff;
+}
+
+/* Card hover animation */
+.pbr-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.pbr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
