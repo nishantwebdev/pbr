@@ -1,63 +1,77 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Footer as FooterType } from '@/payload-types'
 
-export const Footer: React.FC = () => {
+export interface FooterProps {
+  data?: FooterType | null
+}
 
-  const columns = [
-    {
-      title: 'Quick Links',
-      links: [
-        { label: 'Residency', url: '/residency-discounts' },
-        { label: 'Initial Certification', url: '/pediatric-initial-certification' },
-        { label: 'MOC & MOCA-Peds', url: '/maintenance-of-certification' },
-        { label: 'CME/MOC', url: '/cme' },
-        { label: 'Login', url: 'https://courses.pediatricsboardreview.com/pages/home', external: true },
-      ],
-    },
-    {
-      title: 'Products',
-      links: [
-        { label: 'All Access Pass', url: '/all-access-pass' },
-        { label: 'Test-Taking Strategies', url: '/full-test-taking-strategies-course' },
-        { label: 'MOC & MOCA-Peds', url: '/moca-peds-study-guide' },
-        { label: 'CME & MOC Credits', url: '/cme' },
-        { label: 'All Products', url: '/products' },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        { label: 'Blog', url: '/blog-articles' },
-        { label: 'Testimonials', url: '/testimonials' },
-        { label: 'Community Forum', url: '/pediatrics-board-review-facebook-group' },
-        { label: 'Tools to Help You Pass', url: '/tools' },
-        { label: '100% Pass Guarantee', url: '/guarantee' },
-        { label: 'Refund Policy', url: '/refund-policies' },
-      ],
-    },
-    {
-      title: 'Articles',
-      links: [
-        { label: 'Failed Pediatric Boards', url: '/category/failed-pediatric-boards' },
-        { label: 'Passing The Boards', url: '/category/passing-the-boards' },
-        { label: 'American Board of Pediatrics', url: '/category/american-board-of-pediatrics' },
-        { label: 'Pediatric Mnemonics', url: '/category/mnemonics-and-memory-aids' },
-        { label: 'Roadmap To Success', url: '/category/a-roadmap-to-success' },
-        { label: 'Study Schedule & Tips', url: '/category/study-schedule-tips' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { label: 'About', url: '/about' },
-        { label: 'Contact', url: '/contact' },
-        { label: 'FAQ', url: '/frequently-asked-questions-abp' },
-        { label: 'Terms and Conditions', url: '/terms-use' },
-        { label: 'Privacy Policy', url: '/privacy-policy' },
-      ],
-    },
-  ]
+const defaultColumns = [
+  {
+    title: 'Quick Links',
+    links: [
+      { label: 'Residency', url: '/residency-discounts' },
+      { label: 'Initial Certification', url: '/pediatric-initial-certification' },
+      { label: 'MOC & MOCA-Peds', url: '/maintenance-of-certification' },
+      { label: 'CME/MOC', url: '/cme' },
+      { label: 'Login', url: 'https://courses.pediatricsboardreview.com/pages/home' },
+    ],
+  },
+  {
+    title: 'Products',
+    links: [
+      { label: 'All Access Pass', url: '/all-access-pass' },
+      { label: 'Test-Taking Strategies', url: '/full-test-taking-strategies-course' },
+      { label: 'MOC & MOCA-Peds', url: '/moca-peds-study-guide' },
+      { label: 'CME & MOC Credits', url: '/cme' },
+      { label: 'All Products', url: '/products' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog', url: '/blog-articles' },
+      { label: 'Testimonials', url: '/testimonials' },
+      { label: 'Community Forum', url: '/pediatrics-board-review-facebook-group' },
+      { label: 'Tools to Help You Pass', url: '/tools' },
+      { label: '100% Pass Guarantee', url: '/guarantee' },
+      { label: 'Refund Policy', url: '/refund-policies' },
+    ],
+  },
+  {
+    title: 'Articles',
+    links: [
+      { label: 'Failed Pediatric Boards', url: '/category/failed-pediatric-boards' },
+      { label: 'Passing The Boards', url: '/category/passing-the-boards' },
+      { label: 'American Board of Pediatrics', url: '/category/american-board-of-pediatrics' },
+      { label: 'Pediatric Mnemonics', url: '/category/mnemonics-and-memory-aids' },
+      { label: 'Roadmap To Success', url: '/category/a-roadmap-to-success' },
+      { label: 'Study Schedule & Tips', url: '/category/study-schedule-tips' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', url: '/about' },
+      { label: 'Contact', url: '/contact' },
+      { label: 'FAQ', url: '/frequently-asked-questions-abp' },
+      { label: 'Terms and Conditions', url: '/terms-use' },
+      { label: 'Privacy Policy', url: '/privacy-policy' },
+    ],
+  },
+]
+
+export const Footer: React.FC<FooterProps> = ({ data }) => {
+  const isExternal = (url: string) => url.startsWith('http://') || url.startsWith('https://')
+
+  const columns =
+    data?.columns && data.columns.length > 0 ? data.columns : defaultColumns
+
+  const copyright = data?.copyright || '© 2026 Pediatrics Board Review®. All rights reserved.'
+  const disclaimer =
+    data?.disclaimer ||
+    '*Terms & Conditions Apply. Pediatrics Board Review is not affiliated with or endorsed by the American Board of Pediatrics (ABP).'
 
   return (
     <footer id="colophon" className="bg-[#111111] text-[#e2e2e2] pt-16 pb-12 border-t border-[#333333]">
@@ -78,20 +92,20 @@ export const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* 5 Column Navigation Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-12 border-b border-[#252525]">
+        {/* Dynamic Navigation Columns Grid */}
+        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-${Math.min(columns.length, 5)} gap-8 py-12 border-b border-[#252525]`}>
           {columns.map((col, idx) => (
             <div key={idx} className="space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-widest text-white">
                 {col.title}
               </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#878787]">
-                {col.links.map((link, lIdx) => (
+                {col.links?.map((link, lIdx) => (
                   <li key={lIdx}>
                     <Link
                       href={link.url}
-                      target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      target={isExternal(link.url) ? '_blank' : undefined}
+                      rel={isExternal(link.url) ? 'noopener noreferrer' : undefined}
                       className="hover:text-white transition-colors block"
                     >
                       {link.label}
@@ -106,9 +120,9 @@ export const Footer: React.FC = () => {
         {/* Disclaimer & Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#878787] gap-4">
           <div className="space-y-1 text-center md:text-left">
-            <p>© 2026 Pediatrics Board Review®. All rights reserved.</p>
+            <p>{copyright}</p>
             <p className="text-[11px] text-[#666666]">
-              *Terms &amp; Conditions Apply. Pediatrics Board Review is not affiliated with or endorsed by the American Board of Pediatrics (ABP).
+              {disclaimer}
             </p>
           </div>
 

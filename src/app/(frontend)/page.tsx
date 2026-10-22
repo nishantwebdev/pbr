@@ -18,15 +18,20 @@ import { LeadCaptureDrawer } from '@/components/LeadCaptureDrawer'
 import { QuestionBankModal } from '@/components/QuestionBankModal'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { getAllSiteGlobals } from '@/lib/globals'
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic'
+
+export default async function HomePage() {
+  const { siteSettings, header, footer } = await getAllSiteGlobals()
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#252525]">
       {/* 1. Preorder Announcement Bar */}
-      <AnnouncementBar />
+      <AnnouncementBar data={siteSettings?.announcementBar} />
 
       {/* 2. Global Site Header & Navigation */}
-      <Header />
+      <Header data={header} />
 
       {/* Main Content Area */}
       <main className="flex-1">
@@ -55,7 +60,7 @@ export default function HomePage() {
         <FeatureGrid />
 
         {/* 11. Interactive Quiz / Risk Assessment Lead Magnet */}
-        <QuizLeadGen />
+        <QuizLeadGen riskCalculatorUrl={siteSettings?.riskCalculatorUrl} />
 
         {/* 12. Meet Our Founder (Dr. Ashish Goyal) */}
         <FounderBio />
@@ -68,13 +73,13 @@ export default function HomePage() {
       </main>
 
       {/* 15. Global Multi-Column Footer */}
-      <Footer />
+      <Footer data={footer} />
 
       {/* 16. Floating Free Chapters Lead Magnet */}
       <LeadCaptureDrawer />
 
       {/* 17. Question Bank Order Bump Modal */}
-      <QuestionBankModal />
+      <QuestionBankModal orderFormUrl={siteSettings?.infusionsoftOrderFormUrl} />
 
       {/* 18. Cookie Consent Banner */}
       <CookieConsent />

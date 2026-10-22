@@ -4,8 +4,17 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { X, Check, Sparkles } from 'lucide-react'
 
-export const QuestionBankModal: React.FC = () => {
+export interface QuestionBankModalProps {
+  orderFormUrl?: string | null
+}
+
+export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({ orderFormUrl }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const checkoutUrl =
+    orderFormUrl ||
+    'https://sz258.infusionsoft.app/app/orderForms/a9c2a4e4-aed2-48c5-ae5c-9617140bf3a7'
+  const isExternal = checkoutUrl.startsWith('http://') || checkoutUrl.startsWith('https://')
 
   if (!isOpen) return null
 
@@ -56,9 +65,9 @@ export const QuestionBankModal: React.FC = () => {
 
           <div className="pt-2 space-y-2.5">
             <Link
-              href="https://sz258.infusionsoft.app/app/orderForms/a9c2a4e4-aed2-48c5-ae5c-9617140bf3a7"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={checkoutUrl}
+              target={isExternal ? '_blank' : undefined}
+              rel={isExternal ? 'noopener noreferrer' : undefined}
               className="btn-pbr-primary w-full text-center text-sm py-3"
             >
               Add Question Bank To My Order

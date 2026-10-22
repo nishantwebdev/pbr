@@ -1,8 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
-import { Sparkles, ArrowRight, HelpCircle } from 'lucide-react'
+import { Sparkles, ArrowRight } from 'lucide-react'
 
-export const QuizLeadGen: React.FC = () => {
+export interface QuizLeadGenProps {
+  riskCalculatorUrl?: string | null
+}
+
+export const QuizLeadGen: React.FC<QuizLeadGenProps> = ({ riskCalculatorUrl }) => {
+  const targetUrl = riskCalculatorUrl || '/risk-calculator'
+  const isExternal = targetUrl.startsWith('http://') || targetUrl.startsWith('https://')
+
   return (
     <section className="bg-white py-16 lg:py-24 border-t border-[#e2e2e2]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +38,9 @@ export const QuizLeadGen: React.FC = () => {
 
             <div className="pt-4">
               <Link
-                href="/risk-calculator"
+                href={targetUrl}
+                target={isExternal ? '_blank' : undefined}
+                rel={isExternal ? 'noopener noreferrer' : undefined}
                 className="btn-pbr-gold text-base py-3.5 px-8 shadow-lg hover:scale-105 transition-transform inline-flex items-center gap-2"
               >
                 <span>Take the Risk Quiz</span>
