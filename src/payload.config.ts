@@ -16,6 +16,8 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { SiteSettings } from './globals/SiteSettings'
 
+import { migrations } from './migrations'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -35,8 +37,13 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:5432/pbr_cms',
+      connectionString:
+        process.env.DATABASE_URI ||
+        process.env.DATABASE_URL ||
+        process.env.POSTGRES_URL ||
+        'postgresql://postgres:postgres@127.0.0.1:5432/pbr_cms',
     },
+    prodMigrations: migrations,
   }),
   sharp,
 })
