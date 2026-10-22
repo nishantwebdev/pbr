@@ -21,7 +21,7 @@ export const QuestionBankModal: React.FC = () => {
         </button>
 
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f5ebfa] text-[#7f1aa6] text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f5ebfa] text-pbr-primary text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Special Member Offer</span>
           </div>
@@ -36,16 +36,16 @@ export const QuestionBankModal: React.FC = () => {
 
           <div className="bg-[#f4f4f4] p-4 rounded-2xl border border-[#e2e2e2] space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#000000]">
-              <Check className="w-4 h-4 text-[#7f1aa6]" />
+              <Check className="w-4 h-4 text-pbr-primary" />
               <span>12-month full online access</span>
             </div>
             <div className="flex items-center gap-2 text-xs font-semibold text-[#000000]">
-              <Check className="w-4 h-4 text-[#7f1aa6]" />
+              <Check className="w-4 h-4 text-pbr-primary" />
               <span>All 2026/2027 curriculum updates included</span>
             </div>
             <div className="pt-2 border-t border-[#e2e2e2] flex items-baseline justify-between">
               <div>
-                <span className="text-2xl font-extrabold text-[#7f1aa6]">$297</span>
+                <span className="text-2xl font-extrabold text-pbr-primary">$297</span>
                 <span className="text-xs text-[#878787] line-through ml-2">USUAL $1,000</span>
               </div>
               <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2 py-0.5 rounded border border-red-200">

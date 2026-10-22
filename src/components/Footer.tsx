@@ -1,14 +1,8 @@
-'use client'
-
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUp } from 'lucide-react'
 
 export const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   const columns = [
     {
@@ -70,15 +64,15 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Branding Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between pb-12 border-b border-[#252525] gap-6">
-          <div className="bg-white p-2.5 rounded-xl inline-block shadow-sm">
+          <Link href="/" className="inline-block">
             <Image
-              src="/images/pediatrics-board-review-logo.webp"
+              src="/images/Pediatrics-Board-Review-Logo-White-1-scaled-e1764928355422.webp"
               alt="Pediatrics Board Review"
-              width={220}
-              height={48}
-              className="h-9 w-auto object-contain"
+              width={240}
+              height={52}
+              className="h-20 w-auto object-contain"
             />
-          </div>
+          </Link>
           <p className="text-xs sm:text-sm text-[#878787] max-w-md text-center sm:text-right">
             Streamlined, high-yield study resources and proven strategies to help pediatricians pass their board exams with confidence.
           </p>
@@ -125,14 +119,6 @@ export const Footer: React.FC = () => {
             <Link href="/terms-use" className="hover:text-white transition-colors">
               Terms of Use
             </Link>
-            <button
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#252525] hover:bg-[#7f1aa6] text-white transition-colors font-medium text-xs ml-2"
-              aria-label="Scroll to top"
-            >
-              <span>Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
       </div>

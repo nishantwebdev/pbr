@@ -37,7 +37,7 @@ export const ReviewsSlider: React.FC = () => {
   ]
 
   return (
-    <section className="bg-white py-16 lg:py-24 border-t border-[#e2e2e2]">
+    <section className="bg-white pt-16 lg:pt-24 pb-0 border-t border-[#e2e2e2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Trustindex Rating Banner */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -55,7 +55,7 @@ export const ReviewsSlider: React.FC = () => {
             <span className="font-bold text-[#000000] text-sm sm:text-base">5.0 Excellent rating</span>
             <span className="text-[#878787] text-xs sm:text-sm">•</span>
             <span className="text-xs sm:text-sm text-[#252525] font-medium flex items-center gap-1">
-              <ShieldCheck className="w-4 h-4 text-[#7f1aa6]" />
+              <ShieldCheck className="w-4 h-4 text-pbr-primary" />
               94.1% response rate within 48 hours
             </span>
             <span className="text-xs text-[#878787] font-semibold">Verified by Trustindex</span>
@@ -97,35 +97,44 @@ export const ReviewsSlider: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
 
-        {/* As Seen On Row */}
-        <div className="mt-16 pt-10 border-t border-[#e2e2e2] text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#878787] block mb-6">
-            As Seen On
+      {/* As Seen on Row - Full Width */}
+      <div className="mt-16 sm:mt-20 py-10 sm:py-12 bg-pbr-primary w-full text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-xs sm:text-sm font-semibold tracking-wide text-white block mb-6">
+            As Seen on
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-80 grayscale hover:grayscale-0 transition-all">
-            <div className="h-8 flex items-center justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 md:gap-24">
+            {/* PracticeLink */}
+            <div className="h-8 sm:h-10 flex items-center justify-center">
+              <Image
+                src="/images/Practice-Link-Logo.webp"
+                alt="PracticeLink"
+                width={180}
+                height={40}
+                className="max-h-10 sm:max-h-12 w-auto object-contain"
+              />
+            </div>
+            {/* NBC */}
+            <div className="h-8 sm:h-10 flex items-center justify-center">
               <Image
                 src="/images/NBC-Logo.webp"
                 alt="NBC"
-                width={80}
-                height={35}
-                className="max-h-7 w-auto object-contain"
+                width={100}
+                height={40}
+                className="max-h-10 sm:max-h-12 w-auto object-contain"
               />
             </div>
-            <div className="h-8 flex items-center justify-center">
+            {/* familyeducation */}
+            <div className="h-8 sm:h-10 flex items-center justify-center">
               <Image
                 src="/images/Family-Education-Logo.webp"
-                alt="Family Education"
-                width={160}
-                height={35}
-                className="max-h-7 w-auto object-contain"
+                alt="familyeducation"
+                width={180}
+                height={40}
+                className="max-h-10 sm:max-h-12 w-auto object-contain"
               />
-            </div>
-            <div className="h-8 flex items-center justify-center">
-              <span className="text-base font-extrabold text-[#252525] tracking-tight">
-                Practice<span className="text-[#7f1aa6]">Link</span>
-              </span>
             </div>
           </div>
         </div>

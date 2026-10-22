@@ -41,13 +41,13 @@ export default function RiskCalculatorPage() {
         <div className="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-[#e2e2e2] shadow-xl">
           {/* Progress Header */}
           <div className="mb-8">
-            <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#7f1aa6] mb-2">
+            <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-pbr-primary mb-2">
               <span>Identify Your Risk Profile</span>
               <span>Step {step} of {totalSteps}</span>
             </div>
             <div className="w-full bg-[#f4f4f4] h-2 rounded-full overflow-hidden">
               <div
-                className="bg-[#7f1aa6] h-full transition-all duration-300"
+                className="bg-pbr-primary h-full transition-all duration-300"
                 style={{ width: `${(step / totalSteps) * 100}%` }}
               />
             </div>
@@ -79,8 +79,8 @@ export default function RiskCalculatorPage() {
                         }}
                         className={`w-full text-left p-4 rounded-xl border text-sm transition-all flex flex-col ${
                           answers.goal === opt.id
-                            ? 'border-[#7f1aa6] bg-[#f5ebfa] shadow-sm'
-                            : 'border-[#e2e2e2] hover:border-[#7f1aa6]/50 bg-white'
+                            ? 'border-pbr-primary bg-[#f5ebfa] shadow-sm'
+                            : 'border-[#e2e2e2] hover:border-pbr-primary/50 bg-white'
                         }`}
                       >
                         <span className="font-bold text-[#000000]">{opt.label}</span>
@@ -114,8 +114,8 @@ export default function RiskCalculatorPage() {
                         }}
                         className={`w-full text-left p-4 rounded-xl border text-sm font-semibold transition-all ${
                           answers.attemptStatus === opt.id
-                            ? 'border-[#7f1aa6] bg-[#f5ebfa] text-[#7f1aa6]'
-                            : 'border-[#e2e2e2] hover:border-[#7f1aa6]/50 bg-white text-[#252525]'
+                            ? 'border-pbr-primary bg-[#f5ebfa] text-pbr-primary'
+                            : 'border-[#e2e2e2] hover:border-pbr-primary/50 bg-white text-[#252525]'
                         }`}
                       >
                         {opt.label}
@@ -145,8 +145,8 @@ export default function RiskCalculatorPage() {
                         }}
                         className={`w-full text-left p-4 rounded-xl border text-sm font-semibold transition-all ${
                           answers.residencyScore === opt.id
-                            ? 'border-[#7f1aa6] bg-[#f5ebfa] text-[#7f1aa6]'
-                            : 'border-[#e2e2e2] hover:border-[#7f1aa6]/50 bg-white text-[#252525]'
+                            ? 'border-pbr-primary bg-[#f5ebfa] text-pbr-primary'
+                            : 'border-[#e2e2e2] hover:border-pbr-primary/50 bg-white text-[#252525]'
                         }`}
                       >
                         {opt.label}
@@ -176,7 +176,7 @@ export default function RiskCalculatorPage() {
                         value={answers.name}
                         onChange={(e) => setAnswers({ ...answers, name: e.target.value })}
                         placeholder="Dr. Sarah Johnson"
-                        className="w-full text-sm px-4 py-3 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-[#7f1aa6]"
+                        className="w-full text-sm px-4 py-3 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-pbr-primary"
                       />
                     </div>
                     <div>
@@ -189,7 +189,7 @@ export default function RiskCalculatorPage() {
                         value={answers.email}
                         onChange={(e) => setAnswers({ ...answers, email: e.target.value })}
                         placeholder="sjohnson@pediatrics.org"
-                        className="w-full text-sm px-4 py-3 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-[#7f1aa6]"
+                        className="w-full text-sm px-4 py-3 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-pbr-primary"
                       />
                     </div>
                   </div>
@@ -219,12 +219,12 @@ export default function RiskCalculatorPage() {
             </div>
           ) : (
             <div className="text-center space-y-6 py-4">
-              <div className="w-16 h-16 bg-[#f5ebfa] text-[#7f1aa6] rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-[#f5ebfa] text-pbr-primary rounded-full flex items-center justify-center mx-auto">
                 <ShieldCheck className="w-10 h-10" />
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#7f1aa6] bg-[#f5ebfa] px-3 py-1 rounded-full">
+                <span className="text-xs font-bold uppercase tracking-widest text-pbr-primary bg-[#f5ebfa] px-3 py-1 rounded-full">
                   Profile Generated
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000000]">
@@ -237,7 +237,7 @@ export default function RiskCalculatorPage() {
 
               <div className="bg-[#fafafa] p-6 rounded-2xl border border-[#e2e2e2] text-left space-y-3">
                 <div className="flex items-center gap-2 text-sm font-bold text-[#000000]">
-                  <CheckCircle2 className="w-5 h-5 text-[#7f1aa6]" />
+                  <CheckCircle2 className="w-5 h-5 text-pbr-primary" />
                   <span>Recommended Path: All Access Pass + Test Taking Strategies Course</span>
                 </div>
                 <p className="text-xs text-[#878787] pl-7">

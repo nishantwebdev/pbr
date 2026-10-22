@@ -8,9 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'pbr-primary': 'var(--pbr-primary)',
+        'pbr-primary-hover': 'var(--pbr-primary-hover)',
         pbr: {
+          primary: 'var(--pbr-primary)',
           purple: {
-            DEFAULT: '#7f1aa6',
+            DEFAULT: 'var(--pbr-primary)',
             dark: '#681488',
             light: '#b140ec',
             pale: '#f5ebfa',

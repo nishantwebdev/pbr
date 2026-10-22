@@ -6,6 +6,7 @@ import { Download, X, CheckCircle, AlertCircle } from 'lucide-react'
 
 export const LeadCaptureDrawer: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isDismissed, setIsDismissed] = useState(false)
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -54,16 +55,61 @@ export const LeadCaptureDrawer: React.FC = () => {
 
   return (
     <>
-      {/* Floating Bottom Trigger Button (if drawer closed) */}
-      {!isOpen && !submitted && (
-        <aside aria-label="Free Chapters Offer" className="fixed bottom-4 right-4 z-40 animate-bounce duration-1000">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="btn-pbr-gold shadow-2xl py-3 px-5 flex items-center gap-2 border-2 border-white text-xs sm:text-sm font-bold uppercase tracking-wider"
-          >
-            <Download className="w-4 h-4" />
-            <span>Download 2 Free Chapters</span>
-          </button>
+      {/* Floating Bottom Trigger Button (if drawer closed and not dismissed) */}
+      {!isOpen && !submitted && !isDismissed && (
+        <aside aria-label="Free Chapters Offer" className="fixed bottom-4 right-20 sm:right-24 z-40 flex items-center group max-w-[calc(100vw-7rem)]">
+          <div className="relative">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="btn-pbr-gold shadow-2xl py-4 sm:py-5 pl-6 sm:pl-8 pr-7 sm:pr-9 flex items-center gap-4 sm:gap-5 border-2 border-white text-left transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              {/* Chapter Thumbnails */}
+              <div className="flex items-center -space-x-8 shrink-0">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl bg-white p-2 sm:p-2.5 border-2 border-[#e2e2e2] shadow-md overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/images/free-chapter-1.webp"
+                    alt="Gastroenterology Chapter"
+                    width={112}
+                    height={112}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl bg-white p-2 sm:p-2.5 border-2 border-[#e2e2e2] shadow-md overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/images/free-chapter-2.webp"
+                    alt="Dermatology Chapter"
+                    width={112}
+                    height={112}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Text / Badges */}
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2 font-extrabold uppercase text-xs sm:text-sm tracking-wider">
+                  <Download className="w-4 h-4 shrink-0" />
+                  <span>Claim 2 FREE PDF Chapters &amp; MP3s</span>
+                </div>
+                <div className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold text-[#3b2b00] tracking-normal mt-0.5">
+                  <span className="bg-black/10 px-2.5 py-1 rounded-md font-bold">1. GASTROENTEROLOGY</span>
+                  <span className="bg-black/10 px-2.5 py-1 rounded-md font-bold">2. DERMATOLOGY</span>
+                </div>
+              </div>
+            </button>
+
+            {/* Dismiss Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsDismissed(true)
+              }}
+              aria-label="Dismiss offer"
+              className="absolute -top-2 -right-2 p-1.5 rounded-full bg-black/80 hover:bg-black text-white shadow-lg transition-colors z-10 border border-white"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </aside>
       )}
 
@@ -101,21 +147,21 @@ export const LeadCaptureDrawer: React.FC = () => {
             ) : (
               <div className="p-6 sm:p-8">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 relative flex-shrink-0 bg-[#fafafa] rounded-xl border border-[#e2e2e2] overflow-hidden p-1">
+                  <div className="w-20 h-20 relative flex-shrink-0 bg-[#fafafa] rounded-xl border border-[#e2e2e2] overflow-hidden p-1">
                     <Image
-                      src="/images/free-chapter-1.webp"
+                      src="/images/pbr-dermatology-gastroenterology-study-guides.webp"
                       alt="Free Chapters"
-                      width={64}
-                      height={64}
+                      width={128}
+                      height={128}
                       className="object-contain h-full w-full"
                     />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#7f1aa6] bg-[#f5ebfa] px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-pbr-primary bg-[#f5ebfa] px-2 py-0.5 rounded">
                       Instant Access
                     </span>
                     <h3 className="text-lg font-bold text-[#000000] mt-1 leading-snug">
-                      Claim Your Two FREE Chapters &amp; Audio Guides
+                      After Failing 5, 6 and Even TEN Times With Other Study Guides, Pediatricians Come to Us… and PASS.
                     </h3>
                   </div>
                 </div>
@@ -143,7 +189,7 @@ export const LeadCaptureDrawer: React.FC = () => {
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         placeholder="John"
-                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-[#7f1aa6] focus:ring-1 focus:ring-[#7f1aa6]"
+                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-pbr-primary focus:ring-1 focus:ring-pbr-primary"
                       />
                     </div>
                     <div>
@@ -155,7 +201,7 @@ export const LeadCaptureDrawer: React.FC = () => {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         placeholder="Doe"
-                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-[#7f1aa6] focus:ring-1 focus:ring-[#7f1aa6]"
+                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-pbr-primary focus:ring-1 focus:ring-pbr-primary"
                       />
                     </div>
                   </div>
@@ -170,7 +216,7 @@ export const LeadCaptureDrawer: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="doctor@hospital.org"
-                      className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-[#7f1aa6] focus:ring-1 focus:ring-[#7f1aa6]"
+                      className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e2e2e2] focus:outline-none focus:border-pbr-primary focus:ring-1 focus:ring-pbr-primary"
                     />
                   </div>
 

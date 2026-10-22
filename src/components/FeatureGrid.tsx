@@ -43,7 +43,7 @@ export const FeatureGrid: React.FC = () => {
     <section className="bg-[#f4f4f4] py-16 lg:py-24 border-t border-[#e2e2e2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#7f1aa6] bg-[#f5ebfa] px-3 py-1 rounded-full border border-[#7f1aa6]/20">
+          <span className="text-xs font-bold uppercase tracking-widest text-pbr-primary bg-[#f5ebfa] px-3 py-1 rounded-full border border-pbr-primary/20">
             The PBR Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#000000] mt-3">
@@ -55,15 +55,15 @@ export const FeatureGrid: React.FC = () => {
           {features.map((feat, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-8 border border-[#e2e2e2] shadow-sm hover:shadow-lg transition-all pbr-card flex flex-col items-start"
+              className="bg-white rounded-2xl p-8 border border-[#e2e2e2] shadow-sm hover:shadow-lg transition-all pbr-card flex flex-col items-center text-center"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#f5ebfa] flex items-center justify-center p-2 mb-6 border border-[#7f1aa6]/15">
+              <div className="w-16 h-16 flex items-center justify-center mb-5">
                 <Image
                   src={feat.icon}
                   alt={feat.title}
-                  width={40}
-                  height={40}
-                  className="max-h-8 w-auto object-contain"
+                  width={64}
+                  height={64}
+                  className="w-16 h-16 object-contain"
                 />
               </div>
 

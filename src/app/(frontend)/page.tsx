@@ -17,6 +17,7 @@ import { Footer } from '@/components/Footer'
 import { LeadCaptureDrawer } from '@/components/LeadCaptureDrawer'
 import { QuestionBankModal } from '@/components/QuestionBankModal'
 import { CookieConsent } from '@/components/CookieConsent'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 export default function HomePage() {
   return (
@@ -77,6 +78,9 @@ export default function HomePage() {
 
       {/* 18. Cookie Consent Banner */}
       <CookieConsent />
+
+      {/* 19. Floating Scroll To Top Button */}
+      <ScrollToTop />
     </div>
   )
 }

@@ -17,6 +17,8 @@
   --pbr-white: #ffffff;
   --pbr-gold: #ffc72c;
   --pbr-gold-hover: #e5a800;
+  --pbr-primary: var(--pbr-purple-light);
+  --pbr-primary-hover: var(--pbr-purple-dark);
 }
 
 body {
@@ -30,7 +32,7 @@ body {
 
 /* Custom PBR Button Styles matching scraped WordPress site */
 .btn-pbr-primary {
-  background-color: #7f1aa6;
+  background-color: var(--pbr-primary);
   color: #ffffff;
   font-weight: 600;
   padding: 0.75rem 1.75rem;
@@ -44,7 +46,7 @@ body {
 }
 
 .btn-pbr-primary:hover {
-  background-color: #b140ec;
+  background-color: var(--pbr-primary-hover);
   box-shadow: 0 6px 20px rgba(177, 64, 236, 0.35);
   transform: translateY(-1px);
 }
@@ -69,8 +71,8 @@ body {
 }
 
 .btn-pbr-outline {
-  border: 1.5px solid #7f1aa6;
-  color: #7f1aa6;
+  border: 1.5px solid var(--pbr-primary);
+  color: var(--pbr-primary);
   font-weight: 600;
   padding: 0.65rem 1.5rem;
   border-radius: 9999px;
@@ -82,7 +84,7 @@ body {
 }
 
 .btn-pbr-outline:hover {
-  background-color: #7f1aa6;
+  background-color: var(--pbr-primary-hover);
   color: #ffffff;
 }
 
@@ -90,6 +92,7 @@ body {
 .pbr-card {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
 .pbr-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);

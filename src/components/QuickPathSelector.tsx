@@ -42,10 +42,10 @@ export const QuickPathSelector: React.FC = () => {
                 className="group relative bg-[#f4f4f4] hover:bg-[#f5ebfa] rounded-2xl p-8 border border-[#e2e2e2] transition-all duration-300 flex flex-col justify-between pbr-card"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#7f1aa6] shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-pbr-primary shadow-sm mb-6 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="block text-xs font-bold uppercase tracking-wider text-[#878787] group-hover:text-[#7f1aa6] transition-colors mb-2">
+                  <span className="block text-xs font-bold uppercase tracking-wider text-[#878787] group-hover:text-pbr-primary transition-colors mb-2">
                     {track.question}
                   </span>
                   <h3 className="text-xl font-bold text-[#000000] mb-3">
@@ -59,7 +59,7 @@ export const QuickPathSelector: React.FC = () => {
                 <div className="pt-6 mt-6 border-t border-[#e2e2e2]/60">
                   <Link
                     href={track.url}
-                    className="inline-flex items-center gap-1.5 font-bold text-sm text-[#7f1aa6] group-hover:translate-x-1 transition-transform"
+                    className="inline-flex items-center gap-1.5 font-bold text-sm text-pbr-primary group-hover:translate-x-1 transition-transform"
                   >
                     <span>{track.cta}</span>
                     <ArrowUpRight className="w-4 h-4" />

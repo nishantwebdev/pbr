@@ -42,7 +42,7 @@ export const VideoQuotes: React.FC = () => {
     <section className="bg-white py-16 lg:py-24 border-t border-[#e2e2e2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#7f1aa6] bg-[#f5ebfa] px-3 py-1 rounded-full border border-[#7f1aa6]/20">
+          <span className="text-xs font-bold uppercase tracking-widest text-pbr-primary bg-[#f5ebfa] px-3 py-1 rounded-full border border-pbr-primary/20">
             Real Stories
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#000000] mt-3">
@@ -57,7 +57,7 @@ export const VideoQuotes: React.FC = () => {
               className="bg-[#f4f4f4] rounded-2xl p-6 sm:p-8 border border-[#e2e2e2] flex flex-col justify-between pbr-card"
             >
               <div>
-                <Quote className="w-8 h-8 text-[#7f1aa6]/40 mb-3" />
+                <Quote className="w-8 h-8 text-pbr-primary/40 mb-3" />
                 <h3 className="text-lg sm:text-xl font-bold text-[#000000] mb-3">
                   {item.title}
                 </h3>
@@ -77,7 +77,7 @@ export const VideoQuotes: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm text-[#000000]">{item.author}</h4>
-                  <p className="text-xs text-[#7f1aa6] font-medium">{item.credential}</p>
+                  <p className="text-xs text-pbr-primary font-medium">{item.credential}</p>
                 </div>
               </div>
             </div>

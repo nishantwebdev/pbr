@@ -6,7 +6,7 @@ export const QuizLeadGen: React.FC = () => {
   return (
     <section className="bg-white py-16 lg:py-24 border-t border-[#e2e2e2]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-[#7f1aa6] to-[#b140ec] rounded-3xl p-8 sm:p-12 md:p-16 text-white text-center shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-pbr-primary to-[#b140ec] rounded-3xl p-8 sm:p-12 md:p-16 text-white text-center shadow-xl relative overflow-hidden">
           {/* Subtle background circles */}
           <div className="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
           <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 bg-black/10 rounded-full blur-2xl" />
