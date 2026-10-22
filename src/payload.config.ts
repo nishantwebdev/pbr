@@ -21,6 +21,26 @@ import { migrations } from './migrations'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const rawConnectionString =
+  process.env.DATABASE_URI ||
+  process.env.DATABASE_URL ||
+  process.env.POSTGRES_URL ||
+  'postgresql://postgres:postgres@127.0.0.1:5432/pbr_cms'
+
+const isLocalDatabase =
+  rawConnectionString.includes('127.0.0.1') ||
+  rawConnectionString.includes('localhost')
+
+// For remote databases (e.g., Supabase, Neon, AWS RDS on Vercel), hosted poolers often use
+// certificates that trigger "self-signed certificate in certificate chain" in node-postgres.
+// Replacing sslmode=require with sslmode=no-verify and setting pool ssl.rejectUnauthorized: false
+// ensures the connection succeeds securely without failing on self-signed intermediate certificates.
+const connectionString = !isLocalDatabase
+  ? rawConnectionString.includes('sslmode=')
+    ? rawConnectionString.replace(/sslmode=[^&]+/g, 'sslmode=no-verify')
+    : `${rawConnectionString}${rawConnectionString.includes('?') ? '&' : '?'}sslmode=no-verify`
+  : rawConnectionString
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -37,11 +57,12 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString:
-        process.env.DATABASE_URI ||
-        process.env.DATABASE_URL ||
-        process.env.POSTGRES_URL ||
-        'postgresql://postgres:postgres@127.0.0.1:5432/pbr_cms',
+      connectionString,
+      ssl: isLocalDatabase
+        ? false
+        : {
+            rejectUnauthorized: false,
+          },
     },
     prodMigrations: migrations,
   }),
